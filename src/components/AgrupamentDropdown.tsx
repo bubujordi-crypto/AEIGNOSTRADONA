@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDown, BookOpen, GraduationCap, FileText, Symbols, Info } from "lucide-react";
+import { ChevronDown, BookOpen, GraduationCap, FileText, Sparkles, Info } from "lucide-react";
 
 const SUBPAGES = [
   { href: "/agrupament/historia", label: "Història", icon: BookOpen },
   { href: "/agrupament/proposta-educativa", label: "Proposta Educativa", icon: GraduationCap },
   { href: "/agrupament/pea", label: "PEA", icon: FileText },
-  { href: "/agrupament/simbologia", label: "Simbologia", icon: Symbols },
+  { href: "/agrupament/simbologia", label: "Simbologia", icon: Sparkles },
   { href: "/agrupament/mes-info", label: "Més Info", icon: Info },
 ];
 
