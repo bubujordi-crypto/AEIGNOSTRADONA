@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --scout-green: #2D5A27;
+  --scout-green-dark: #1E3D1A;
+  --scout-gold: #D4A84B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased text-gray-900 bg-stone-50;
+}

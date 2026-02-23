@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "name": "Agrupament Escolta - CAU",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.next": true
+    }
+  }
+}
