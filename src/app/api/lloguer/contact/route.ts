@@ -9,17 +9,19 @@ function escapeHtml(text: string): string {
     .replace(/"/g, "&quot;");
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = "albergueria.nostradonadelasalut@escoltesiguies.cat";
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
 
 export async function POST(request: NextRequest) {
-  if (!process.env.RESEND_API_KEY) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
     return NextResponse.json(
-      { error: "El servei d'email no està configurat. Afegeix RESEND_API_KEY a .env.local" },
+      { error: "El servei d'email no està configurat. Afegeix RESEND_API_KEY a les variables d'entorn." },
       { status: 500 }
     );
   }
+
+  const resend = new Resend(apiKey);
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
 
   try {
     const body = await request.json();
@@ -48,7 +50,7 @@ export async function POST(request: NextRequest) {
     `.trim();
 
     const { data, error } = await resend.emails.send({
-      from: `AEIG Nostra Dona de la Salut <${FROM_EMAIL}>`,
+      from: `AEIG Nostra Dona de la Salut <${fromEmail}>`,
       to: TO_EMAIL,
       replyTo: email,
       subject,
