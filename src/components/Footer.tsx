@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-scout-gold">AEIG Nostra Dona de la Salut</h3>
             <p className="mt-2 text-sm text-white/80">
-              Agrupament Escolta de l&apos;Església de Girona
+              AEIG Nostra Dona de la Salut
             </p>
           </div>
 

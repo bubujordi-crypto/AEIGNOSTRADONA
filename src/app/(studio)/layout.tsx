@@ -1,0 +1,17 @@
+export default function StudioLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      style={{
+        height: "100vh",
+        maxHeight: "100dvh",
+        overflow: "auto",
+      }}
+    >
+      {children}
+    </div>
+  );
+}

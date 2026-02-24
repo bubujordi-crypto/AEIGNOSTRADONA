@@ -1,0 +1,15 @@
+# Netlify - AEIG Nostra Dona de la Salut (Next.js 14)
+# https://docs.netlify.com/frameworks/next-js/
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirecciones para el Studio de Sanity (catch-all ya lo maneja Next.js)
+# No hace falta añadir nada más; el plugin de Next.js sirve todas las rutas.
