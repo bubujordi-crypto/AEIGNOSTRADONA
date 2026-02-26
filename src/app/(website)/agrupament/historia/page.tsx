@@ -169,7 +169,7 @@ export default async function HistoriaPage() {
                               .width(500)
                               .height(375)
                               .url()}
-                            alt={"alt" in image ? image.alt || entrada.title : entrada.title}
+                            alt={String(("alt" in image && image.alt) || entrada.title)}
                             fill
                             className="object-cover"
                             sizes="(max-width: 640px) 100vw, 50vw"

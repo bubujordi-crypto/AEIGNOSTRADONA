@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { TreePine, Calendar, Users } from "lucide-react";
 
 const CARDS = [
@@ -44,10 +45,12 @@ export default function NavCards() {
                 className="group relative overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-200/50 hover:ring-scout-green/30 hover:shadow-xl transition-all duration-300"
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
-                  <img
+                  <Image
                     src={card.image}
-                    alt=""
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    alt={card.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
