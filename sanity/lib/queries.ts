@@ -14,3 +14,14 @@ export const fotosGaleriaQuery = `*[_type == "fotoGaleria"] | order(date desc) {
   category,
   date
 }`;
+
+export const entradesHistoriaQuery = `*[_type == "entradaHistoria"] | order(publishedAt desc) {
+  _id,
+  title,
+  slug,
+  mainImage,
+  publishedAt,
+  excerpt,
+  body,
+  galeria
+}`;
