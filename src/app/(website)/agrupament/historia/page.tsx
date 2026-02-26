@@ -71,6 +71,8 @@ function BlockContent({ blocks }: { blocks: Block[] }) {
   );
 }
 
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export default async function HistoriaPage() {
   const entrades: EntradaHistoria[] = await client.fetch(entradesHistoriaQuery);
 

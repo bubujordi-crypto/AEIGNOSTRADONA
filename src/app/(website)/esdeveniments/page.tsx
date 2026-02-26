@@ -15,6 +15,8 @@ interface Esdeveniment {
   description?: string;
 }
 
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export default async function EsdevenimentsPage() {
   const esdeveniments: Esdeveniment[] = await client.fetch(esdevenimentsQuery);
 

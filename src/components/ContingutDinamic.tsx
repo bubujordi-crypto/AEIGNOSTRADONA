@@ -40,6 +40,8 @@ const portableTextComponents = {
   },
 };
 
+export const revalidate = 60; // Revalidate every 60 seconds
+
 export default async function ContingutDinamic({
   slug,
   backHref,
