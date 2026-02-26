@@ -21,6 +21,7 @@ export const paginaContingut = defineType({
       validation: (Rule) => Rule.required(),
       options: {
         list: [
+          { title: "Inici", value: "inici" },
           { title: "Proposta Educativa", value: "proposta-educativa" },
           { title: "PEA", value: "pea" },
           { title: "Simbologia", value: "simbologia" },
@@ -35,6 +36,7 @@ export const paginaContingut = defineType({
           { title: "Caps i Quel·les", value: "caps-i-queles" },
           { title: "Equips i Càrrecs", value: "equips-i-carrecs" },
           { title: "Contacte", value: "contacte" },
+          { title: "Vine a dormir (Lloguer)", value: "lloguer" },
         ],
       },
     }),
