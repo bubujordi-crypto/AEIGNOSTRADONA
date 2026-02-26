@@ -72,10 +72,7 @@ function BlockContent({ blocks }: { blocks: Block[] }) {
 }
 
 export default async function HistoriaPage() {
-  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const entrades: EntradaHistoria[] = projectId
-    ? await client.fetch(entradesHistoriaQuery)
-    : [];
+  const entrades: EntradaHistoria[] = await client.fetch(entradesHistoriaQuery);
 
   return (
     <div className="min-h-screen py-12 px-4 mx-auto max-w-4xl">

@@ -23,10 +23,7 @@ interface Props {
 
 export default async function EsdevenimentPage({ params }: Props) {
   const { slug } = await params;
-  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const event: Esdeveniment | null = projectId
-    ? await client.fetch(esdevenimentBySlugQuery, { slug })
-    : null;
+  const event: Esdeveniment | null = await client.fetch(esdevenimentBySlugQuery, { slug });
 
   if (!event) notFound();
 

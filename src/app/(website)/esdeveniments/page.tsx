@@ -16,10 +16,7 @@ interface Esdeveniment {
 }
 
 export default async function EsdevenimentsPage() {
-  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const esdeveniments: Esdeveniment[] = projectId
-    ? await client.fetch(esdevenimentsQuery)
-    : [];
+  const esdeveniments: Esdeveniment[] = await client.fetch(esdevenimentsQuery);
 
   return (
     <div className="min-h-screen py-12 px-4 mx-auto max-w-7xl">

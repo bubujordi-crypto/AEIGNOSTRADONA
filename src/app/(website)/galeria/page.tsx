@@ -13,10 +13,7 @@ interface FotoGaleria {
 }
 
 export default async function GaleriaPage() {
-  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const fotos: FotoGaleria[] = projectId
-    ? await client.fetch(fotosGaleriaQuery)
-    : [];
+  const fotos: FotoGaleria[] = await client.fetch(fotosGaleriaQuery);
 
   return (
     <div className="min-h-screen py-12 px-4 mx-auto max-w-7xl">

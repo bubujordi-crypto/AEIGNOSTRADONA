@@ -46,10 +46,7 @@ export default async function ContingutDinamic({
   backLabel,
   sectionTitle,
 }: ContingutDinamicProps) {
-  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-  const pagina = projectId
-    ? await client.fetch(paginaContingutQuery, { slug })
-    : null;
+  const pagina = await client.fetch(paginaContingutQuery, { slug });
 
   return (
     <div className="min-h-screen py-12 px-4 mx-auto max-w-4xl">
