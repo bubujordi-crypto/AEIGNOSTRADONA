@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { client } from "../../../../sanity/lib/client";
 import { esdevenimentsQuery } from "../../../../sanity/lib/queries";
 import { urlFor } from "../../../../sanity/lib/image";
@@ -10,6 +11,7 @@ interface Esdeveniment {
   slug: { current: string };
   date: string;
   mainImage?: SanityImage;
+  galeria?: Array<SanityImage & { alt?: string }>;
   description?: string;
 }
 
@@ -37,10 +39,14 @@ export default async function EsdevenimentsPage() {
       ) : (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {esdeveniments.map((event) => (
-            <article
+            <Link
               key={event._id}
-              className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow"
+              href={`/esdeveniments/${event.slug?.current || event._id}`}
+              className="block group"
             >
+              <article
+                className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm group-hover:shadow-md group-hover:border-scout-green/30 transition-all"
+              >
               {event.mainImage && (
                 <div className="relative aspect-video w-full">
                   <Image
@@ -78,6 +84,7 @@ export default async function EsdevenimentsPage() {
                 )}
               </div>
             </article>
+            </Link>
           ))}
         </div>
       )}

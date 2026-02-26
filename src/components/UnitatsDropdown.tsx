@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDown, BookOpen, Users, Tent, Info, Quote, UserCheck } from "lucide-react";
+import { ChevronDown, Users } from "lucide-react";
 
 const SUBPAGES = [
-  { href: "/unitats/info-pedagogica", label: "Info Pedagògica", icon: BookOpen },
-  { href: "/unitats/edat", label: "Edat", icon: Users },
-  { href: "/unitats/campaments", label: "Campaments", icon: Tent },
-  { href: "/unitats/info", label: "Info", icon: Info },
-  { href: "/unitats/lema", label: "Lema", icon: Quote },
-  { href: "/unitats/caps", label: "Caps", icon: UserCheck },
+  { href: "/unitats/castors", label: "CASTORS (6-7)", icon: Users },
+  { href: "/unitats/llops", label: "Llops (7-8)", icon: Users },
+  { href: "/unitats/rangers", label: "RANGERS (11-12)", icon: Users },
+  { href: "/unitats/pioners", label: "PIONERS (12-13)", icon: Users },
+  { href: "/unitats/truc-1", label: "TRUC I (15-16)", icon: Users },
+  { href: "/unitats/truc-2", label: "TRUC II (17-18)", icon: Users },
 ];
 
 export default function UnitatsDropdown() {

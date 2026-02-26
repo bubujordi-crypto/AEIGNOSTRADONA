@@ -15,3 +15,25 @@ html {
 body {
   @apply antialiased text-gray-900 bg-stone-50;
 }
+
+/* Evitar que les imatges s'estenguin més enllà del contenidor */
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Embla carousel - assegurar que les slides es mostrin correctament */
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}

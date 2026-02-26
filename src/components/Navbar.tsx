@@ -15,12 +15,12 @@ const AGRUPAMENT_SUBPAGES = [
 ];
 
 const UNITATS_SUBPAGES = [
-  { href: "/unitats/info-pedagogica", label: "Info Pedagògica" },
-  { href: "/unitats/edat", label: "Edat" },
-  { href: "/unitats/campaments", label: "Campaments" },
-  { href: "/unitats/info", label: "Info" },
-  { href: "/unitats/lema", label: "Lema" },
-  { href: "/unitats/caps", label: "Caps" },
+  { href: "/unitats/castors", label: "CASTORS (6-7)" },
+  { href: "/unitats/llops", label: "Llops (7-8)" },
+  { href: "/unitats/rangers", label: "RANGERS (11-12)" },
+  { href: "/unitats/pioners", label: "PIONERS (12-13)" },
+  { href: "/unitats/truc-1", label: "TRUC I (15-16)" },
+  { href: "/unitats/truc-2", label: "TRUC II (17-18)" },
 ];
 
 const CONSELL_SUBPAGES = [
@@ -37,8 +37,7 @@ const NAV_LINKS = [
   { href: "/esdeveniments", label: "ESDEVENIMENTS" },
   { href: "/calendari", label: "CALENDARI" },
   { href: "/galeria", label: "GALERIA" },
-  { href: "/lloguer", label: "VINE A DORMIR AL CAU" },
-  { href: "/contacte", label: "CONTACTE" },
+  { href: "/lloguer", label: "VINE A DORMIR" },
 ];
 
 function isSectionActive(pathname: string, base: string) {
@@ -105,15 +104,17 @@ export default function Navbar() {
                 </button>
                 {openDropdown === link.href && (
                   <div className="absolute left-0 top-full mt-1 w-56 rounded-lg border border-gray-200 bg-white py-2 shadow-lg">
-                    <Link
-                      href={link.href}
-                      onClick={() => setOpenDropdown(null)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname === link.href ? "bg-scout-green/10 text-scout-green font-medium" : "text-gray-700 hover:bg-scout-green/5"
-                      }`}
-                    >
-                      Vista general
-                    </Link>
+                    {link.href !== "/unitats" && (
+                      <Link
+                        href={link.href}
+                        onClick={() => setOpenDropdown(null)}
+                        className={`block px-4 py-2 text-sm ${
+                          pathname === link.href ? "bg-scout-green/10 text-scout-green font-medium" : "text-gray-700 hover:bg-scout-green/5"
+                        }`}
+                      >
+                        Vista general
+                      </Link>
+                    )}
                     {link.children.map((sub) => (
                       <Link
                         key={sub.href}
@@ -173,16 +174,18 @@ export default function Navbar() {
                   </button>
                   {mobileExpanded === link.href && (
                     <div className="pl-4 mt-1 space-y-1 border-l-2 border-scout-green/20 ml-2">
-                      <Link
-                        href={link.href}
-                        onClick={() => {
-                          setMobileOpen(false);
-                          setMobileExpanded(null);
-                        }}
-                        className={`block px-3 py-2 rounded-lg text-sm ${pathname === link.href ? "text-scout-green font-medium" : "text-gray-600"}`}
-                      >
-                        Vista general
-                      </Link>
+                      {link.href !== "/unitats" && (
+                        <Link
+                          href={link.href}
+                          onClick={() => {
+                            setMobileOpen(false);
+                            setMobileExpanded(null);
+                          }}
+                          className={`block px-3 py-2 rounded-lg text-sm ${pathname === link.href ? "text-scout-green font-medium" : "text-gray-600"}`}
+                        >
+                          Vista general
+                        </Link>
+                      )}
                       {link.children.map((sub) => (
                         <Link
                           key={sub.href}

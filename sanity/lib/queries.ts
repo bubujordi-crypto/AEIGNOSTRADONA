@@ -7,6 +7,16 @@ export const esdevenimentsQuery = `*[_type == "esdeveniment"] | order(date desc)
   description
 }`;
 
+export const esdevenimentBySlugQuery = `*[_type == "esdeveniment" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  date,
+  mainImage,
+  galeria,
+  description
+}`;
+
 export const fotosGaleriaQuery = `*[_type == "fotoGaleria"] | order(date desc) {
   _id,
   title,
@@ -24,4 +34,11 @@ export const entradesHistoriaQuery = `*[_type == "entradaHistoria"] | order(publ
   excerpt,
   body,
   galeria
+}`;
+
+export const paginaContingutQuery = `*[_type == "paginaContingut" && slug == $slug][0] {
+  _id,
+  title,
+  slug,
+  body
 }`;

@@ -1,0 +1,391 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "El nom de l'esdeveniment (ex: Buti 2025)",
+        "name": "title",
+        "type": "string",
+        "title": "Títol"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Prem 'Generate' i es crearà sol. No cal canviar-ho.",
+        "name": "slug",
+        "type": "slug",
+        "title": "URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Quan té lloc l'esdeveniment",
+        "name": "date",
+        "type": "date",
+        "title": "Data"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Arrossega una foto o prem per pujar-la",
+        "fields": [
+          {
+            "description": "Breu descripció per a persones amb dificultats visuals",
+            "name": "alt",
+            "type": "string",
+            "title": "Descripció de la imatge"
+          }
+        ],
+        "name": "mainImage",
+        "type": "image",
+        "title": "Imatge"
+      },
+      {
+        "rows": 3,
+        "description": "Un resum curt que es veurà a la llista d'esdeveniments",
+        "name": "description",
+        "type": "text",
+        "title": "Descripció"
+      }
+    ],
+    "name": "esdeveniment",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Arrossega la foto o prem per pujar-la",
+        "fields": [
+          {
+            "description": "Què es veu a la foto (opcional)",
+            "name": "alt",
+            "type": "string",
+            "title": "Descripció"
+          }
+        ],
+        "name": "image",
+        "type": "image",
+        "title": "Imatge"
+      },
+      {
+        "description": "Un títol o descripció breu (opcional)",
+        "name": "title",
+        "type": "string",
+        "title": "Peu de foto"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Campaments",
+              "value": "Campaments"
+            },
+            {
+              "title": "Rutes",
+              "value": "Rutes"
+            },
+            {
+              "title": "Cau",
+              "value": "Cau"
+            },
+            {
+              "title": "Altres",
+              "value": "Altres"
+            }
+          ]
+        },
+        "description": "On s'agruparà la foto a la galeria",
+        "name": "category",
+        "type": "string",
+        "title": "Categoria"
+      },
+      {
+        "description": "Quan es va fer la foto (opcional)",
+        "name": "date",
+        "type": "date",
+        "title": "Data"
+      }
+    ],
+    "name": "fotoGaleria",
+    "type": "document",
+    "title": "Foto"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "El títol de l'entrada",
+        "name": "title",
+        "type": "string",
+        "title": "Títol"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Prem 'Generate' i es crearà sol. No cal canviar-ho.",
+        "name": "slug",
+        "type": "slug",
+        "title": "URL"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "La foto destacada de l'entrada",
+        "fields": [
+          {
+            "name": "alt",
+            "type": "string",
+            "title": "Descripció"
+          }
+        ],
+        "name": "mainImage",
+        "type": "image",
+        "title": "Imatge principal"
+      },
+      {
+        "description": "Quan es va publicar o té lloc",
+        "name": "publishedAt",
+        "type": "date",
+        "title": "Data"
+      },
+      {
+        "rows": 3,
+        "description": "Un resum curt que apareix a la llista",
+        "name": "excerpt",
+        "type": "text",
+        "title": "Resum"
+      },
+      {
+        "description": "Escriu el contingut aquí. Pots afegir encapçalaments, llistes i fotos.",
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "fields": [
+              {
+                "name": "alt",
+                "type": "string",
+                "title": "Descripció"
+              }
+            ],
+            "type": "image"
+          }
+        ],
+        "name": "body",
+        "type": "array",
+        "title": "Text"
+      },
+      {
+        "description": "Fotos addicionals per a l'entrada",
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "fields": [
+              {
+                "name": "alt",
+                "type": "string",
+                "title": "Descripció"
+              },
+              {
+                "name": "caption",
+                "type": "string",
+                "title": "Peu de foto"
+              }
+            ],
+            "type": "image"
+          }
+        ],
+        "name": "galeria",
+        "type": "array",
+        "title": "Més fotos"
+      }
+    ],
+    "name": "entradaHistoria",
+    "type": "document",
+    "title": "Entrada d'història"
+  }
+]

@@ -34,22 +34,22 @@ export default async function GaleriaPage() {
           .
         </p>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 w-full max-w-full">
           {fotos.map((foto) => (
             <figure
               key={foto._id}
-              className="group relative aspect-square overflow-hidden rounded-lg border border-gray-200 bg-gray-100"
+              className="group relative aspect-square w-full min-w-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-100"
             >
               {foto.image ? (
                 <Image
-                  src={urlFor(foto.image).width(400).height(400).url()}
+                  src={urlFor(foto.image).width(400).height(400).fit("max").url()}
                   alt={
                     (foto.image as SanityImage & { alt?: string })?.alt ||
                     foto.title ||
                     "Foto de la galeria"
                   }
                   fill
-                  className="object-cover transition-transform group-hover:scale-105"
+                  className="object-cover transition-transform group-hover:scale-105 w-full h-full"
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                 />
               ) : (

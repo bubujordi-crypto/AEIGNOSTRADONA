@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Missatge:</strong></p>
         <p style="white-space: pre-wrap; background: #f5f5f5; padding: 1rem; border-radius: 8px;">${escapeHtml(missatge)}</p>
         <hr style="border: none; border-top: 1px solid #eee; margin: 1.5rem 0;">
-        <p style="font-size: 12px; color: #666;">AEIG Nostra Dona de la Salut - Vine a dormir al cau</p>
+        <p style="font-size: 12px; color: #666;">AEIG Nostra Dona de la Salut - Vine a dormir</p>
       </div>
     `.trim();
 

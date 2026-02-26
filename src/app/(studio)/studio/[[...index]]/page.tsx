@@ -19,7 +19,7 @@ const NextStudio = dynamic(
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        Carregant Sanity Studio…
+        Carregant editor…
       </div>
     ),
   }

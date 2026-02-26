@@ -24,7 +24,7 @@ export default function LloguerPage() {
 
   return (
     <div className="min-h-screen py-12 px-4 mx-auto max-w-3xl">
-      <h1 className="text-4xl font-bold text-scout-green">Vine a dormir al cau</h1>
+      <h1 className="text-4xl font-bold text-scout-green">Vine a dormir</h1>
       <p className="mt-4 text-gray-600">
         Contacta&apos;ns per reservar o consultar disponibilitat per al lloguer del nostre espai.
       </p>

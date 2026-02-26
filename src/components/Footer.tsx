@@ -56,7 +56,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/lloguer" className="text-sm text-white/80 hover:text-white">
-                  Vine a dormir al cau
+                  Vine a dormir
                 </Link>
               </li>
               <li>
