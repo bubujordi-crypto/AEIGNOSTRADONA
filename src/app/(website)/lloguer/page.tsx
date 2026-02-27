@@ -1,5 +1,5 @@
-import { client } from "../../sanity/lib/client";
-import { paginaContingutQuery } from "../../sanity/lib/queries";
+import { client } from "../../../../sanity/lib/client";
+import { paginaContingutQuery } from "../../../../sanity/lib/queries";
 import { PortableText } from "next-sanity";
 import LloguerForm from "@/components/LloguerForm";
 import type { PortableTextBlock } from "sanity";
