@@ -3,41 +3,38 @@
 import Link from "next/link";
 import Image from "next/image";
 import { TreePine, Calendar, Users } from "lucide-react";
+import { urlFor } from "../../sanity/lib/image";
 
-const CARDS = [
-  {
-    href: "/agrupament",
-    title: "AGRUPAMENT",
-    subtitle: "Coneix la nostra història i proposta educativa",
-    icon: TreePine,
-    image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80",
-  },
-  {
-    href: "/esdeveniments",
-    title: "NOTÍCIES / ESDEVENIMENTS",
-    subtitle: "Últimes novetats i esdeveniments",
-    icon: Calendar,
-    image: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=600&q=80",
-  },
-  {
-    href: "/unitats",
-    title: "UNITATS",
-    subtitle: "CILL (6-8), LLID, RÚNICS, PIONERS, CLI...",
-    icon: Users,
-    image: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=600&q=80",
-  },
+const CARDS_DEFAULT = [
+  { href: "/agrupament", title: "AGRUPAMENT", subtitle: "Coneix la nostra història i proposta educativa", image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80" },
+  { href: "/esdeveniments", title: "NOTÍCIES / ESDEVENIMENTS", subtitle: "Últimes novetats i esdeveniments", image: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=600&q=80" },
+  { href: "/unitats", title: "UNITATS", subtitle: "CILL (6-8), LLID, RÚNICS, PIONERS, CLI...", image: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=600&q=80" },
 ];
 
-export default function NavCards() {
+const ICONS = [TreePine, Calendar, Users];
+
+type SanityImage = { asset?: { _ref?: string }; alt?: string };
+type Card = { href: string; title: string; subtitle?: string; image?: SanityImage | null };
+
+function getImageSrc(card: Card, index: number): string {
+  if (card.image && typeof card.image === "object" && "asset" in card.image) {
+    return urlFor(card.image).width(600).quality(80).url();
+  }
+  return CARDS_DEFAULT[index]?.image || CARDS_DEFAULT[0].image;
+}
+
+export default function NavCards({ titol, cards }: { titol?: string | null; cards?: Array<Card> | null }) {
+  const items = cards && cards.length > 0 ? cards : CARDS_DEFAULT;
+  const heading = titol || "Descobreix l'Agrupament";
+
   return (
     <section className="py-16 sm:py-24 bg-stone-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-scout-green text-center mb-12">
-          Descobreix l&apos;Agrupament
-        </h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-scout-green text-center mb-12">{heading}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {CARDS.map((card) => {
-            const Icon = card.icon;
+          {items.map((card, index) => {
+            const Icon = ICONS[index % ICONS.length];
+            const imgSrc = getImageSrc(card as Card, index);
             return (
               <Link
                 key={card.href}
@@ -46,7 +43,7 @@ export default function NavCards() {
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
                   <Image
-                    src={card.image}
+                    src={imgSrc}
                     alt={card.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"

@@ -42,3 +42,25 @@ export const paginaContingutQuery = `*[_type == "paginaContingut" && slug == $sl
   slug,
   body
 }`;
+
+export const configuracioLlocQuery = `*[_type == "configuracioLloc"][0] {
+  navLinks,
+  footerTitol,
+  footerDescripcio,
+  footerEmail,
+  footerLinks
+}`;
+
+export const paginaIniciQuery = `*[_type == "paginaInici"][0] {
+  heroTitle,
+  heroSlides,
+  counterStats,
+  navCardsTitol,
+  navCards
+}`;
+
+export const llistaUnitatsQuery = `*[_type == "llistaUnitats"][0] {
+  titol,
+  descripcio,
+  unitats
+}`;

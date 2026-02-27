@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "createdAt": "2026-02-26T22:33:15.443Z",
+  "createdAt": "2026-02-27T01:35:34.816Z",
   "workspaces": [
     {
       "name": "aeig-cau",
@@ -12,7 +12,7 @@
       "mediaLibrary": {
         "enabled": false
       },
-      "schema": "ec3bab98.create-schema.json",
+      "schema": "31d9f79d.create-schema.json",
       "tools": "d57bf8ec.create-tools.json"
     }
   ],

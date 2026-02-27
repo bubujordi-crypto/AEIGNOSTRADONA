@@ -16,9 +16,40 @@ export const structure: StructureResolver = (S) =>
       
       S.divider(),
 
+      // Configuració global i pàgina d'inici
+      S.listItem()
+        .title("⚙️ Configuració del lloc")
+        .id("configuracio-lloc")
+        .child(
+          S.document()
+            .schemaType("configuracioLloc")
+            .documentId("configuracio-lloc")
+            .title("Menú i footer")
+        ),
+      S.listItem()
+        .title("🏠 Pàgina d'inici (hero, comptador, targetes)")
+        .id("pagina-inici")
+        .child(
+          S.document()
+            .schemaType("paginaInici")
+            .documentId("pagina-inici")
+            .title("Pàgina d'inici")
+        ),
+      S.listItem()
+        .title("📋 Llista d'unitats")
+        .id("llista-unitats")
+        .child(
+          S.document()
+            .schemaType("llistaUnitats")
+            .documentId("llista-unitats")
+            .title("Targetes d'unitats")
+        ),
+
+      S.divider(),
+
       // Seccions principals
       S.listItem()
-        .title("Pàgina d'Inici")
+        .title("Pàgina d'Inici (contingut)")
         .id("inici")
         .child(
           S.document()

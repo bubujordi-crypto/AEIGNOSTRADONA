@@ -1,31 +1,40 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
+import { urlFor } from "../../sanity/lib/image";
 
-const SLIDES = [
-  {
-    src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1920&q=80",
-    alt: "Acampada en la natura",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=1920&q=80",
-    alt: "Jocs a l'aire lliure",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=1920&q=80",
-    alt: "Foc de camp",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1920&q=80",
-    alt: "Caminada a la muntanya",
-  },
+const SLIDES_DEFAULT = [
+  { src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1920&q=80", alt: "Acampada en la natura" },
+  { src: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=1920&q=80", alt: "Jocs a l'aire lliure" },
+  { src: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=1920&q=80", alt: "Foc de camp" },
+  { src: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1920&q=80", alt: "Caminada a la muntanya" },
 ];
 
 const AUTO_PLAY_INTERVAL = 5000;
 
-export default function HeroCarousel() {
+type SanityImage = { asset?: { _ref?: string }; alt?: string };
+
+export default function HeroCarousel({
+  heroTitle,
+  heroSlides,
+}: {
+  heroTitle?: string | null;
+  heroSlides?: Array<SanityImage> | null;
+}) {
+  const slides = useMemo(() => {
+    if (heroSlides && heroSlides.length > 0) {
+      return heroSlides.map((img) => ({
+        src: urlFor(img).width(1920).quality(80).url(),
+        alt: (img as SanityImage & { alt?: string })?.alt || "Imatge del hero",
+      }));
+    }
+    return SLIDES_DEFAULT;
+  }, [heroSlides]);
+
+  const title = heroTitle || "FOTOS AMB LLEI ESCOLTA QUE VAN RULANDO";
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
@@ -41,7 +50,7 @@ export default function HeroCarousel() {
     <section className="relative w-full overflow-hidden">
       <div className="embla" ref={emblaRef}>
         <div className="embla__container flex">
-          {SLIDES.map((slide, i) => (
+          {slides.map((slide, i) => (
             <div
               key={i}
               className="embla__slide relative min-w-0 flex-[0_0_100%] h-[70vh] min-h-[400px] sm:h-[80vh] md:h-[85vh]"
@@ -57,7 +66,7 @@ export default function HeroCarousel() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center px-4 drop-shadow-lg">
-                  FOTOS AMB LLEI ESCOLTA QUE VAN RULANDO
+                  {title}
                 </h1>
               </div>
             </div>

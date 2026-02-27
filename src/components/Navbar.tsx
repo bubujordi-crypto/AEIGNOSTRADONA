@@ -6,6 +6,9 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
+type NavSubLink = { href: string; label: string };
+type NavLink = { href: string; label: string; children?: NavSubLink[] };
+
 const AGRUPAMENT_SUBPAGES = [
   { href: "/agrupament/historia", label: "Història" },
   { href: "/agrupament/proposta-educativa", label: "Proposta Educativa" },
@@ -29,7 +32,11 @@ const CONSELL_SUBPAGES = [
   { href: "/consell/equips-i-carrecs", label: "Equips i Càrrecs" },
 ];
 
-const NAV_LINKS = [
+function isSectionActive(pathname: string, base: string) {
+  return pathname === base || pathname.startsWith(`${base}/`);
+}
+
+const NAV_LINKS_DEFAULT: NavLink[] = [
   { href: "/", label: "INICI" },
   { href: "/agrupament", label: "L'AGRUPAMENT", children: AGRUPAMENT_SUBPAGES },
   { href: "/unitats", label: "UNITATS", children: UNITATS_SUBPAGES },
@@ -40,11 +47,8 @@ const NAV_LINKS = [
   { href: "/lloguer", label: "VINE A DORMIR" },
 ];
 
-function isSectionActive(pathname: string, base: string) {
-  return pathname === base || pathname.startsWith(`${base}/`);
-}
-
-export default function Navbar() {
+export default function Navbar({ navLinks }: { navLinks?: NavLink[] | null }) {
+  const links = navLinks && navLinks.length > 0 ? navLinks : NAV_LINKS_DEFAULT;
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -87,7 +91,7 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden lg:flex lg:items-center lg:gap-1" ref={dropdownRef}>
-          {NAV_LINKS.map((link) =>
+          {links.map((link) =>
             link.children ? (
               <div key={link.href} className="relative">
                 <button
@@ -157,7 +161,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden border-t border-scout-green/10 bg-white">
           <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
-            {NAV_LINKS.map((link) =>
+            {links.map((link) =>
               link.children ? (
                 <div key={link.href}>
                   <button
