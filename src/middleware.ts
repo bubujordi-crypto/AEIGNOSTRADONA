@@ -2,9 +2,8 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const isProtectedPath = 
-    request.nextUrl.pathname.startsWith("/galeria") ||
-    request.nextUrl.pathname.startsWith("/esdeveniments");
+  // Només la galeria requereix contrasenya (fotos dels nens)
+  const isProtectedPath = request.nextUrl.pathname.startsWith("/galeria");
 
   if (isProtectedPath) {
     const authCookie = request.cookies.get("cau_auth");
@@ -21,8 +20,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/galeria/:path*",
-    "/esdeveniments/:path*",
-  ],
+  matcher: ["/galeria/:path*"],
 };
