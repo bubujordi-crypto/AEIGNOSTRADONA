@@ -104,17 +104,15 @@ export default function Navbar() {
                 </button>
                 {openDropdown === link.href && (
                   <div className="absolute left-0 top-full mt-1 w-56 rounded-lg border border-gray-200 bg-white py-2 shadow-lg">
-                    {link.href !== "/unitats" && (
-                      <Link
-                        href={link.href}
-                        onClick={() => setOpenDropdown(null)}
-                        className={`block px-4 py-2 text-sm ${
-                          pathname === link.href ? "bg-scout-green/10 text-scout-green font-medium" : "text-gray-700 hover:bg-scout-green/5"
-                        }`}
-                      >
-                        Vista general
-                      </Link>
-                    )}
+                    <Link
+                      href={link.href}
+                      onClick={() => setOpenDropdown(null)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname === link.href ? "bg-scout-green/10 text-scout-green font-medium" : "text-gray-700 hover:bg-scout-green/5"
+                      }`}
+                    >
+                      Vista general
+                    </Link>
                     {link.children.map((sub) => (
                       <Link
                         key={sub.href}
@@ -174,18 +172,16 @@ export default function Navbar() {
                   </button>
                   {mobileExpanded === link.href && (
                     <div className="pl-4 mt-1 space-y-1 border-l-2 border-scout-green/20 ml-2">
-                      {link.href !== "/unitats" && (
-                        <Link
-                          href={link.href}
-                          onClick={() => {
-                            setMobileOpen(false);
-                            setMobileExpanded(null);
-                          }}
-                          className={`block px-3 py-2 rounded-lg text-sm ${pathname === link.href ? "text-scout-green font-medium" : "text-gray-600"}`}
-                        >
-                          Vista general
-                        </Link>
-                      )}
+                      <Link
+                        href={link.href}
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setMobileExpanded(null);
+                        }}
+                        className={`block px-3 py-2 rounded-lg text-sm ${pathname === link.href ? "text-scout-green font-medium" : "text-gray-600"}`}
+                      >
+                        Vista general
+                      </Link>
                       {link.children.map((sub) => (
                         <Link
                           key={sub.href}
