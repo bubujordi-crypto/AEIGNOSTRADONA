@@ -26,10 +26,16 @@ export const configuracioLloc = defineType({
                     { name: "href", title: "Enllaç", type: "string", validation: (Rule) => Rule.required() },
                     { name: "label", title: "Text", type: "string", validation: (Rule) => Rule.required() },
                   ],
+                  preview: {
+                    select: { title: "label", subtitle: "href" },
+                  },
                 },
               ],
             },
           ],
+          preview: {
+            select: { title: "label", subtitle: "href" },
+          },
         },
       ],
     }),
@@ -47,6 +53,9 @@ export const configuracioLloc = defineType({
             { name: "href", title: "Enllaç", type: "string", validation: (Rule) => Rule.required() },
             { name: "label", title: "Text", type: "string", validation: (Rule) => Rule.required() },
           ],
+          preview: {
+            select: { title: "label", subtitle: "href" },
+          },
         },
       ],
     }),

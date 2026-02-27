@@ -4,7 +4,7 @@ import NavCards from "@/components/NavCards";
 import { client } from "../../../sanity/lib/client";
 import { paginaIniciQuery } from "../../../sanity/lib/queries";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export default async function HomePage() {
   const data = await client.fetch(paginaIniciQuery);

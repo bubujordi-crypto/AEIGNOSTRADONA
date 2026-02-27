@@ -21,7 +21,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 10; // Revalidate every 10 seconds
 
 export default async function EsdevenimentPage({ params }: Props) {
   const { slug } = await params;

@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { client } from "../../../sanity/lib/client";
 import { configuracioLlocQuery } from "../../../sanity/lib/queries";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export default async function WebsiteLayout({
   children,

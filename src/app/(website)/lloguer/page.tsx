@@ -4,7 +4,7 @@ import { PortableText } from "next-sanity";
 import LloguerForm from "@/components/LloguerForm";
 import type { PortableTextBlock } from "sanity";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export default async function LloguerPage() {
   const pagina = await client.fetch(paginaContingutQuery, { slug: "lloguer" });

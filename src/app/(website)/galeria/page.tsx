@@ -12,7 +12,7 @@ interface FotoGaleria {
   date?: string;
 }
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 10; // Revalidate every 10 seconds
 
 export default async function GaleriaPage() {
   const fotos: FotoGaleria[] = await client.fetch(fotosGaleriaQuery);

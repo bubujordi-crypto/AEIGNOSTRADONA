@@ -17,7 +17,7 @@ function colorToTextClass(color?: string | null): string {
   return color.replace(/^bg-/, "text-");
 }
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export default async function UnitatsPage() {
   const data = await client.fetch(llistaUnitatsQuery);
