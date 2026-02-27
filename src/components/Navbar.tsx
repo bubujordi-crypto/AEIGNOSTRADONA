@@ -111,7 +111,7 @@ export default function Navbar() {
                         pathname === link.href ? "bg-scout-green/10 text-scout-green font-medium" : "text-gray-700 hover:bg-scout-green/5"
                       }`}
                     >
-                      Vista general
+                      {link.label === "UNITATS" ? "Totes les unitats" : "Vista general"}
                     </Link>
                     {link.children.map((sub) => (
                       <Link
@@ -180,7 +180,7 @@ export default function Navbar() {
                         }}
                         className={`block px-3 py-2 rounded-lg text-sm ${pathname === link.href ? "text-scout-green font-medium" : "text-gray-600"}`}
                       >
-                        Vista general
+                        {link.label === "UNITATS" ? "Totes les unitats" : "Vista general"}
                       </Link>
                       {link.children.map((sub) => (
                         <Link
