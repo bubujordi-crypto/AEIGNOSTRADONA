@@ -34,10 +34,12 @@ async function seedPagines() {
         slug: pagina.slug,
         body: [
           {
+            _key: "block-1",
             _type: "block",
             style: "normal",
             children: [
               {
+                _key: "span-1",
                 _type: "span",
                 marks: [],
                 text: "Benvinguts a la pàgina de " + pagina.title + ". Pots editar aquest text des del panell de Sanity.",
