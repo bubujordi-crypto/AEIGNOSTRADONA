@@ -91,8 +91,9 @@ export default function Navbar({ navLinks }: { navLinks?: NavLink[] | null }) {
         </Link>
 
         <div className="hidden lg:flex lg:items-center lg:gap-1" ref={dropdownRef}>
-          {links.map((link) =>
-            link.children && link.children.length > 0 ? (
+          {links.map((link) => {
+            const validChildren = link.children?.filter(sub => sub && sub.href && sub.label) || [];
+            return validChildren.length > 0 ? (
               <div key={link.href} className="relative">
                 <button
                   type="button"
@@ -117,7 +118,7 @@ export default function Navbar({ navLinks }: { navLinks?: NavLink[] | null }) {
                     >
                       {link.label === "UNITATS" ? "Totes les unitats" : "Vista general"}
                     </Link>
-                    {link.children.map((sub) => (
+                    {validChildren.map((sub) => (
                       <Link
                         key={sub.href}
                         href={sub.href}
@@ -144,8 +145,8 @@ export default function Navbar({ navLinks }: { navLinks?: NavLink[] | null }) {
               >
                 {link.label}
               </Link>
-            )
-          )}
+            );
+          })}
         </div>
 
         <button
@@ -161,8 +162,9 @@ export default function Navbar({ navLinks }: { navLinks?: NavLink[] | null }) {
       {mobileOpen && (
         <div className="lg:hidden border-t border-scout-green/10 bg-white">
           <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
-            {links.map((link) =>
-              link.children && link.children.length > 0 ? (
+            {links.map((link) => {
+              const validChildren = link.children?.filter(sub => sub && sub.href && sub.label) || [];
+              return validChildren.length > 0 ? (
                 <div key={link.href}>
                   <button
                     type="button"
@@ -186,7 +188,7 @@ export default function Navbar({ navLinks }: { navLinks?: NavLink[] | null }) {
                       >
                         {link.label === "UNITATS" ? "Totes les unitats" : "Vista general"}
                       </Link>
-                      {link.children.map((sub) => (
+                      {validChildren.map((sub) => (
                         <Link
                           key={sub.href}
                           href={sub.href}
@@ -213,8 +215,8 @@ export default function Navbar({ navLinks }: { navLinks?: NavLink[] | null }) {
                 >
                   {link.label}
                 </Link>
-              )
-            )}
+              );
+            })}
           </div>
         </div>
       )}
